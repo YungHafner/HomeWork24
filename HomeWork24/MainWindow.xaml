@@ -1,0 +1,69 @@
+﻿<Window x:Class="HomeWork24.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork24"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--Window.Resources>
+        <ContextMenu x:Key="listMenu">
+            <MenuItem Header="Добавить" Click="AddStudent"/>
+            <MenuItem Header="Удалить" Click="DeleteStudent"/>
+        </ContextMenu>
+    </Window.Resources-->
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="Справочник">
+                <MenuItem Header="Выроботка" Click="OpenDate"/>
+                <MenuItem Header="Нам требуются сотрудники" Click="ForWorkers"/>
+                <MenuItem Header="Награды нашей компании" Click="ForWorkers"/>
+                <MenuItem Header="Работники месяца" Click="TopWorkers"/>
+            </MenuItem>
+        </Menu>
+
+        <ListBox Grid.Row="1" SelectedItem="{Binding SelectedWorkers}"
+                 ItemsSource="{Binding Workers}" 
+                 DisplayMemberPath="LastName" 
+                 
+                 />
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <StackPanel 
+                DataContext="{Binding SelectedWorkers}"
+                Orientation="Vertical">
+                <Label Content="Имя"/>
+                <TextBox Text="{Binding FirstName}"/>
+                <Label Content="Отчество"/>
+                <TextBox Text="{Binding Patronymic}"/>
+                <Label Content="Фамилия"/>
+                <TextBox Text="{Binding LastName}"/>
+                <Label Content="Опыт работы"/>
+                <DatePicker Text="{Binding TimeWorking}" />
+                <Label Content="Профессия"/>
+                <TextBox Text="{Binding Profession}"/>
+                <Label Content="3П"/>
+                <TextBox Text="{Binding Money}"/>
+                <Label Content="Возраст"/>
+                <TextBox Text="{Binding YearsOld}"/>
+                
+                
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
